@@ -477,4 +477,34 @@ insert into reservationWeb (id_reservationWeb, nbPlace, prix, codeBarre) values 
 insert into reservationWeb (id_reservationWeb, nbPlace, prix, codeBarre) values (99, 1, '€10,92', '57520-0382');
 insert into reservationWeb (id_reservationWeb, nbPlace, prix, codeBarre) values (100, 5, '€38,89', '68084-463');
 
---requêtes pour acheter un billet physique --
+insert into projection (id_projection, placesLibres, placesReservees) values (1, 42, 158);
+insert into projection (id_projection, placesLibres, placesReservees) values (2, 2, 198);
+insert into projection (id_projection, placesLibres, placesReservees) values (3, 35, 165);
+insert into projection (id_projection, placesLibres, placesReservees) values (4, 180, 20);
+insert into projection (id_projection, placesLibres, placesReservees) values (5, 79, 121);
+insert into projection (id_projection, placesLibres, placesReservees) values (6, 37, 163);
+insert into projection (id_projection, placesLibres, placesReservees) values (7, 60, 140);
+insert into projection (id_projection, placesLibres, placesReservees) values (8, 68, 132);
+insert into projection (id_projection, placesLibres, placesReservees) values (9, 199, 9&;
+insert into projection (id_projection, placesLibres, placesReservees) values (10, 99, 10&);
+
+--créer privilèges aux admin--
+SELECT PASSWORD('password');
+CREATE USER 'admin1'@'localhost' IDENTIFIED BY PASSWORD '$2y$10$ge0kwd/yVRK///vF8ofP8OV2YX258hJfXcALSAWuWB9IUO.e.05dG';
+CREATE USER 'admin2'@'localhost' IDENTIFIED BY PASSWORD '$2y$10$jPnrEBjhybBlC4xbPuPs6.fhOlB820Ibjd0WMvD10qnvDnjCRHnci';
+CREATE USER 'admin3'@'localhost' IDENTIFIED BY PASSWORD '$2y$10$zdS3r2z1MH8b/2vXPa9qVeLt0bZvZ7c2SGGl1evYwkhETDrtWrTFi';
+CREATE USER 'admin4'@'localhost' IDENTIFIED BY PASSWORD '$2y$10$4kg1Audemozrd6fLWCuJx.pJtRYDTbNmaD3MiAEvQMuxn5MuSRDiW';
+CREATE USER 'admin5'@'localhost' IDENTIFIED BY PASSWORD '$2y$10$IjPrsoTRzl3G3trjkve74uRpSQFr21eHo./ItLAMIRkO8p41IWNa2';
+
+GRANT ALL PRIVILEGES ON * . * TO 'admin1'@'localhost';
+GRANT ALL PRIVILEGES ON * . * TO 'admin2'@'localhost';
+GRANT ALL PRIVILEGES ON * . * TO 'admin3'@'localhost';
+GRANT ALL PRIVILEGES ON * . * TO 'admin4'@'localhost';
+GRANT ALL PRIVILEGES ON * . * TO 'admin5'@'localhost';
+
+FLUSH PRIVILEGES;
+
+--créer les privilèges aux utilisateurs lambdas--
+
+CREATE USER 'lambda'@'localhost' IDENTIFIED BY PASSWORD '$2y$10$KyKRGWPUFxiEDMdr4/kQzOiyVZTEvUPZJLH8i.O9nqsjZ0xdq2VOW';
+GRANT USAGE ON * . * TO 'lambda'@'localhost';
