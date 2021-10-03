@@ -129,7 +129,43 @@ CREATE TABLE projection (
     REFERENCES  horaire(id_horaire),
 )engine=INNODB;
 
--- ajouter les associations binaire ! --
+--associations binaires-- 
+
+CREATE TABLE correspondre (
+    id_tarif integer
+    id_projection integer
+    CONSTRAINT PK_correspondre primary key (id_tarif,id_projection)
+    CONSTRAINT FK_correspondre_id_tarif_tarif
+            FOREIGN KEY (id_tarif)
+            REFERENCES tarif(id_tarif)
+    CONSTRAINT FK_correspondre_id_projection_projection
+            FOREIGN KEY (id_projection)
+            REFERENCES projection(id_projection)
+) engine=INNODB; 
+
+CREATE TABLE effectuer (
+    id_client integer
+    id_reservation integer
+    CONSTRAINT PK_effectuer primary key (id_client,id_reservation)
+    CONSTRAINT FK_effectuer_id_client_client
+            FOREIGN KEY (id_client)
+            REFERENCES client(id_client)
+    CONSTRAINT FK_effectuer_id_reservation_reservationGuichet
+            FOREIGN KEY (id_reservation)
+            REFERENCES reservationGuichet(id_reservation)
+) engine=INNODB; 
+
+CREATE TABLE effectuerWeb (
+    id_internaute integer
+    id_reservationWeb integer
+    CONSTRAINT PK_effectuerWeb primary key (id_internaute,id_reservationWeb)
+    CONSTRAINT FK_effectuerWeb_id_internaute_internaute
+            FOREIGN KEY (id_internaute)
+            REFERENCES internaute(id_internaute)
+    CONSTRAINT FK_effectuerWeb_id_reservationWeb_reservationWeb
+            FOREIGN KEY (id_reservationWeb)
+            REFERENCES reservationWeb(id_reservationWeb)
+) engine=INNODB; 
 
 
 --remplissage des tables--
@@ -440,3 +476,5 @@ insert into reservationWeb (id_reservationWeb, nbPlace, prix, codeBarre) values 
 insert into reservationWeb (id_reservationWeb, nbPlace, prix, codeBarre) values (98, 5, '€24,87', '65044-5210');
 insert into reservationWeb (id_reservationWeb, nbPlace, prix, codeBarre) values (99, 1, '€10,92', '57520-0382');
 insert into reservationWeb (id_reservationWeb, nbPlace, prix, codeBarre) values (100, 5, '€38,89', '68084-463');
+
+--requêtes pour acheter un billet physique --
