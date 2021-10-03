@@ -508,3 +508,5 @@ FLUSH PRIVILEGES;
 
 CREATE USER 'lambda'@'localhost' IDENTIFIED BY PASSWORD '$2y$10$KyKRGWPUFxiEDMdr4/kQzOiyVZTEvUPZJLH8i.O9nqsjZ0xdq2VOW';
 GRANT USAGE ON * . * TO 'lambda'@'localhost';
+
+--sauvegarde et restauration BD-- 
